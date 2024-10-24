@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mart_app/core/utils/commons.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_images.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../data/models/on_boarding_model.dart';
@@ -29,13 +31,13 @@ class OnBoadringItem extends StatelessWidget {
               SvgPicture.asset(
                 AppImages.onBoardingBackground,
                 width: double.infinity,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
               Center(
                 child: SvgPicture.asset(
                   model.image,
                   // width: double.infinity,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
             ],
@@ -92,16 +94,10 @@ class OnBoadringItem extends StatelessWidget {
           child: InkWell(
             onTap: () {
               index == 2
-                  ? Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => const Scaffold(
-                                  body: Center(
-                                child: Text('Login'),
-                              ))))
-                  : controller.nextPage(
+                  ? context.navigateTo(screenRoute: Routes.loginRoute)                  : controller.nextPage(
                       duration: const Duration(seconds: 1),
-                      curve: Curves.bounceIn,);
+                      curve: Curves.bounceIn,
+                    );
             },
             child: Center(
               child: Text(

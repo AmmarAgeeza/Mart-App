@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '/features/onboarding/presentation/screens/on_boarding_screens.dart';
 import '../core/themes/app_theme.dart';
+import '../core/utils/app_routes.dart';
 import '../core/utils/app_strings.dart';
 
 class MartApp extends StatelessWidget {
@@ -10,9 +10,10 @@ class MartApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: Routes.initialRoute,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
       title: AppStrings.appName,
       theme: AppTheme.getAppTheme(),
-      home: const OnBoardingScreens(),
     );
   }
 }

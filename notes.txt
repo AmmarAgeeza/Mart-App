@@ -1,0 +1,13 @@
+native splash screen [Done]
+add file extentions => navigator [Done]
+add cache helper and visit onboarding only one time.
+login screen with gust
+login screen ui
+login screen with firebase and repo
+register screen ui
+register screen with firebase and repo
+forget password ui
+forget password with firebase and repo 
+send otp with firebase or sms
+google signin
+facebook signin

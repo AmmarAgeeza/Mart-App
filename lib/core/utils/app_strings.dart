@@ -20,4 +20,6 @@ class AppStrings {
   static const String createYourAccount = "Create your account";
   static const String register = "Register";
   static const String acceptTerms = "By tapping “Sign Up” you accept our terms and condition";
+  static const String noRouteFound = "No Route Found";
+
 }

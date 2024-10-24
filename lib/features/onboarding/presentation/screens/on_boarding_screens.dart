@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mart_app/features/onboarding/data/models/on_boarding_model.dart';
+import '/features/onboarding/data/models/on_boarding_model.dart';
 
 import '../components/on_boarding_item.dart';
 
