@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mart_app/core/utils/commons.dart';
+import 'package:mart_app/features/onboarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -91,20 +93,28 @@ class OnBoadringItem extends StatelessWidget {
               ],
             ),
           ),
-          child: InkWell(
-            onTap: () {
-              index == 2
-                  ? context.navigateTo(screenRoute: Routes.loginRoute)                  : controller.nextPage(
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.bounceIn,
-                    );
+          child: BlocListener<OnBoardingCubit, OnBoardingState>(
+            listener: (context, state) {
+              if (state is OnBoardingSucess) {
+                context.navigateTo(screenRoute: Routes.loginRoute);
+              }
             },
-            child: Center(
-              child: Text(
+            child: InkWell(
+              onTap: () {
                 index == 2
-                    ? AppStrings.getStarted.toUpperCase()
-                    : AppStrings.next.toUpperCase(),
-                style: AppStyles.bold16,
+                    ? context.read<OnBoardingCubit>().saveCacheVisition()
+                    : controller.nextPage(
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.bounceIn,
+                      );
+              },
+              child: Center(
+                child: Text(
+                  index == 2
+                      ? AppStrings.getStarted.toUpperCase()
+                      : AppStrings.next.toUpperCase(),
+                  style: AppStyles.bold16,
+                ),
               ),
             ),
           ),
