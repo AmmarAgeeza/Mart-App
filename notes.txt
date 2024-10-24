@@ -1,6 +1,6 @@
 native splash screen [Done]
 add file extentions => navigator [Done]
-add cache helper and visit onboarding only one time.
+add cache helper and visit onboarding only one time.[Done]
 login screen with gust
 login screen ui
 login screen with firebase and repo
