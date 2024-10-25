@@ -4,24 +4,24 @@ import 'app_colors.dart';
 import 'app_fonts.dart';
 
 class AppStyles {
-  static TextStyle medium16 = const TextStyle(
+  static const TextStyle mediumBlack16 =  TextStyle(
     fontSize: AppFonts.s16,
-    fontWeight: FontWeight.w500,
+    fontWeight: AppFonts.medium,
     color: AppColors.black,
   );
-  static TextStyle semiBold18 = const TextStyle(
-    fontSize: AppFonts.s18,
-    fontWeight: FontWeight.w600,
-    color: AppColors.black,
-  );
-  static TextStyle bold22 = const TextStyle(
+  static const TextStyle boldBlack22 =  TextStyle(
     fontSize: AppFonts.s22,
-    fontWeight: FontWeight.w700,
+    fontWeight: AppFonts.bold,
     color: AppColors.black,
   );
-  static TextStyle bold16 = const TextStyle(
+  static const TextStyle boldWhite16 =  TextStyle(
     fontSize: AppFonts.s16,
-    fontWeight: FontWeight.w700,
+    fontWeight: AppFonts.bold,
     color: AppColors.white,
+  );
+  static const TextStyle semiBoldOrang16 =  TextStyle(
+    fontSize: AppFonts.s16,
+    fontWeight: AppFonts.semiBold,
+    color: AppColors.orange,
   );
 }

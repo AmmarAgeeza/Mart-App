@@ -1,6 +1,6 @@
 class AppImages {
 
-  static const String headerBackground = "assets/images/header_background.svg";
+  static const String headerBackgroundWithLogo = "assets/images/header_background_logo.svg";
   static const String logoText = "assets/images/logo_text.svg";
   static const String on1 = "assets/images/on_1.svg";
   static const String on2 = "assets/images/on_2.svg";

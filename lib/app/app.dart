@@ -34,6 +34,7 @@ class _MartAppState extends State<MartApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: hasVisited ? Routes.loginRoute : Routes.initialRoute,
       onGenerateRoute: AppRoutes.onGenerateRoute,
       title: AppStrings.appName,

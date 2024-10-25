@@ -50,7 +50,7 @@ class OnBoadringItem extends StatelessWidget {
         ),
         Text(
           model.title,
-          style: AppStyles.bold22,
+          style: AppStyles.boldBlack22,
         ),
         const SizedBox(
           height: 25,
@@ -59,7 +59,7 @@ class OnBoadringItem extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Text(
             model.subTitle,
-            style: AppStyles.medium16,
+            style: AppStyles.mediumBlack16,
             textAlign: TextAlign.center,
           ),
         ),
@@ -113,7 +113,7 @@ class OnBoadringItem extends StatelessWidget {
                   index == 2
                       ? AppStrings.getStarted.toUpperCase()
                       : AppStrings.next.toUpperCase(),
-                  style: AppStyles.bold16,
+                  style: AppStyles.boldWhite16,
                 ),
               ),
             ),
