@@ -15,11 +15,15 @@ class AppStrings {
   static const String signIn = "SIGN IN";
   static const String keepSignIn = "Keep Sign In";
   static const String forgotPassword = "Forgot Password?";
-  static const String dontHaveAnAccount  = "Don’t have an account? ";
-  static const String alreadyHaveAnAccount  = "Already have an account? ";
+  static const String dontHaveAnAccount = "Don’t have an account? ";
+  static const String alreadyHaveAnAccount = "Already have an account? ";
   static const String createYourAccount = "Create your account";
   static const String register = "Register";
-  static const String acceptTerms = "By tapping “Sign Up” you accept our terms and condition";
+  static const String acceptTerms =
+      "By tapping “Sign Up” you accept our terms and condition";
+  static const String emailHint = "enter your e-mail";
+  static const String passwordHint = "enter your password";
+  static const String signInWithGoogle = "Sign in with Google";
+  static const String signInWithFacebook = "Sign in with Facebook";
   static const String noRouteFound = "No Route Found";
-
 }
