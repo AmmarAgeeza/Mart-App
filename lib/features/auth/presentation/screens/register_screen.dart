@@ -5,15 +5,15 @@ import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../components/auth_header_component.dart';
-import '../components/login/dont_have_account_text.dart';
-import '../components/login/forget_password_component.dart';
-import '../components/login/login_form_component.dart';
 import '../components/or_divider_component.dart';
-import '../components/login/social_media_login_component.dart';
-import '../cubit/login/login_cubit.dart';
+import '../components/register/already_have_account.dart';
+import '../components/register/register_form_component.dart';
+import '../components/register/social_media_register_component.dart';
+import '../components/register/terms_conditions.dart';
+import '../cubit/register/register_cubit.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +30,33 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //login form
+                  //register form
                   const Text(
-                    AppStrings.welcomeBack,
+                    AppStrings.createYourAccount,
                     style: AppStyles.boldBlack22,
                   ),
                   const SizedBox(
                     height: 12,
                   ),
-                  const LoginFormComponent(),
-                  //forget password
-                  const ForgetPasswordComponent(),
+                  const RegisterFormComponent(),
+                  const SizedBox(
+                    height: 24,
+                  ),
                   //login button
                   CustomButton(
                     onPressed: () {
                       if (context
-                          .read<LoginCubit>()
-                          .loginFormKey
+                          .read<RegisterCubit>()
+                          .registerFormKey
                           .currentState!
                           .validate()) {}
                     },
-                    text: AppStrings.signIn,
+                    text: AppStrings.signUp,
                   ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const TermsConditionsText(),
                   const SizedBox(
                     height: 24,
                   ),
@@ -61,12 +66,12 @@ class LoginScreen extends StatelessWidget {
                     height: 24,
                   ),
                   //social auth
-                  const SocialMediaLoginComponent(),
+                  const SocialMediaRegisterComponent(),
                   const SizedBox(
                     height: 24,
                   ),
-                  // don't have an account
-                  const Center(child: DontHaveAccountText()),
+                  // already have an account
+                  const Center(child: AlreadyHaveAccountText()),
                 ],
               ),
             )
