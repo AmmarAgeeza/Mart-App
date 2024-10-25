@@ -12,8 +12,10 @@ class AppStrings {
   static const String next = "Next";
   static const String getStarted = "Get Started";
   static const String welcomeBack = "Welcome back";
+  static const String resetYourPassword = "Reset Your Password";
   static const String signIn = "SIGN IN";
   static const String signUp = "SIGN UP";
+  static const String resetPassword = "Reset Password";
   static const String keepSignIn = "Keep Sign In";
   static const String forgotPassword = "Forgot Password?";
   static const String dontHaveAnAccount = "Don’t have an account? ";
