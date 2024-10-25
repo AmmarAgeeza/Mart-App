@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mart_app/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:mart_app/features/auth/presentation/cubit/login/login_cubit.dart';
 
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/utils/custom_validations.dart';
-import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_strings.dart';
+import '../../../../../core/utils/custom_validations.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class LoginFormComponent extends StatelessWidget {
   const LoginFormComponent({
