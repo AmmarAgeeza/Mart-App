@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '/core/utils/app_images.dart';
-import '/core/widgets/custom_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
+import '/core/utils/app_images.dart';
+import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../components/dont_have_account_text.dart';
@@ -10,6 +11,7 @@ import '../components/forget_password_component.dart';
 import '../components/login_form_component.dart';
 import '../components/or_divider_component.dart';
 import '../components/social_media_auth_component.dart';
+import '../cubit/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -48,7 +50,13 @@ class LoginScreen extends StatelessWidget {
                   const ForgetPasswordComponent(),
                   //login button
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (context
+                          .read<LoginCubit>()
+                          .loginFormKey
+                          .currentState!
+                          .validate()) {}
+                    },
                     text: AppStrings.signIn,
                   ),
                   const SizedBox(

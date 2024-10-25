@@ -25,5 +25,8 @@ class AppStrings {
   static const String passwordHint = "enter your password";
   static const String signInWithGoogle = "Sign in with Google";
   static const String signInWithFacebook = "Sign in with Facebook";
+  static const String enterValidEmail = 'enter valid email';
+  static const String enterValidPassword = 'enter valid password';
+  static const String enterValidName = 'enter valid name';
   static const String noRouteFound = "No Route Found";
 }

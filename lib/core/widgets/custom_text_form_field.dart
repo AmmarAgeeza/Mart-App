@@ -51,9 +51,9 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      // autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: maxLines,
-      cursorColor: AppColors.black,
+      cursorColor: AppColors.orange,
       controller: controller,
       keyboardType: type,
       obscureText: isPassword,
@@ -65,6 +65,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: validate,
       readOnly: readOnly,
       style: AppStyles.mediumBlack16,
+      // obscuringCharacter: '',
       decoration: InputDecoration(
         fillColor: fillColor,
         filled: filled,
@@ -88,8 +89,10 @@ class CustomTextFormField extends StatelessWidget {
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: color != null ? color! : AppColors.grey),
+          borderSide: BorderSide(
+            color: color != null ? color! : AppColors.orange,
+            width: 2.0,
+          ),
           borderRadius: const BorderRadius.all(
             Radius.circular(
               14,

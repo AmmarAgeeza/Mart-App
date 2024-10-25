@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mart_app/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:mart_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:mart_app/features/onboarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:mart_app/features/onboarding/presentation/screens/on_boarding_screens.dart';
@@ -25,9 +26,12 @@ class AppRoutes {
         );
       case Routes.loginRoute:
         return MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => LoginCubit(),
+            child: const LoginScreen(),
+          ),
         );
-      
+
       default:
         return undefinedRoute();
     }
