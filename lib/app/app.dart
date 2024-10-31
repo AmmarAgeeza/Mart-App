@@ -15,27 +15,34 @@ class MartApp extends StatefulWidget {
 }
 
 class _MartAppState extends State<MartApp> {
-  late bool hasVisited;
+  // late bool hasVisited;
+  late String route;
   @override
   void initState() {
     super.initState();
-    hasVisited = checkHasVisited();
+    route = checkHasVisited();
   }
 
-  bool checkHasVisited()  {
-  var hasVisited =  sl<CacheConsumer>().getData(key: CacheKeys.visitedOnBoarding);
-  if (hasVisited == null) {
-    return false;
-  }
-  return hasVisited;
-
+  String checkHasVisited() {
+    var hasVisitedOnBoarding =
+        sl<CacheConsumer>().getData(key: CacheKeys.visitedOnBoarding);
+    var hasVisitedLogin =
+        sl<CacheConsumer>().getData(key: CacheKeys.userUid);
+    if (hasVisitedOnBoarding == true) {
+      return Routes.loginRoute;
+    }
+    if (hasVisitedLogin == true) {
+      return Routes.homeRoute;
+    }
+    return Routes.initialRoute;
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: hasVisited ? Routes.loginRoute : Routes.initialRoute,
+      initialRoute: route,
+      // hasVisited ? Routes.loginRoute : Routes.initialRoute,
       onGenerateRoute: AppRoutes.onGenerateRoute,
       title: AppStrings.appName,
       theme: AppTheme.getAppTheme(),

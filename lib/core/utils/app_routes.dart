@@ -52,6 +52,10 @@ class AppRoutes {
             child: const ResetPasswordScreen(),
           ),
         );
+      case Routes.homeRoute:
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(),
+        );
 
       default:
         return undefinedRoute();
