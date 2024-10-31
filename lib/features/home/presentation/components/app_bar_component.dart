@@ -10,11 +10,33 @@ class AppBarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 80,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(AppImages.logoColor),
+          //search button
+          IconButton(
+            style: const ButtonStyle(
+              shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ))),
+              backgroundColor: WidgetStatePropertyAll(AppColors.grey),
+            ),
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+          //logo in centre
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: SvgPicture.asset(
+                AppImages.logoColor,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          //cart button
           IconButton(
             style: const ButtonStyle(
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
