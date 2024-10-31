@@ -26,13 +26,12 @@ class _MartAppState extends State<MartApp> {
   String checkHasVisited() {
     var hasVisitedOnBoarding =
         sl<CacheConsumer>().getData(key: CacheKeys.visitedOnBoarding);
-    var hasVisitedLogin =
-        sl<CacheConsumer>().getData(key: CacheKeys.userUid);
+    var hasVisitedLogin = sl<CacheConsumer>().getData(key: CacheKeys.userUid);
+    if (hasVisitedLogin != null) {
+      return Routes.homeRoute;
+    }
     if (hasVisitedOnBoarding == true) {
       return Routes.loginRoute;
-    }
-    if (hasVisitedLogin == true) {
-      return Routes.homeRoute;
     }
     return Routes.initialRoute;
   }

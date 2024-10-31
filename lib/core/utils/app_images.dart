@@ -7,4 +7,5 @@ class AppImages {
   static const String on3 = "assets/images/on_3.svg";
   static const String onBoardingBackground = "assets/images/on_boarding_background.svg";
   static const String logoAnimation = "assets/animations/splash_screen.json";
+  static const String logoColor = "assets/images/logo_color.svg";
 }
