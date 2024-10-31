@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../errors/exceptions.dart';
+import 'app_exceptions_strings.dart';
 
 class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
@@ -19,19 +18,19 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw CustomException(message: 'The password is too weak.');
+        throw CustomException(message: AppExceptionsStrings.weekPassword);
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
-            message: 'You have already registered. Please log in.');
+            message:AppExceptionsStrings.emailAlreadyInUse);
       } else if (e.code == 'network-request-failed') {
         throw CustomException(
-            message: 'Make sure you are connected to the internet.');
+            message: AppExceptionsStrings.networkRequestFailed);
       } else {
         throw CustomException(
-            message: 'Something went wrong. Please try again.');
+            message: AppExceptionsStrings.somethingWentWrong);
       }
     } catch (e) {
-      throw CustomException(message: 'Something went wrong. Please try again.');
+      throw CustomException(message: AppExceptionsStrings.somethingWentWrong);
     }
   }
 
@@ -42,22 +41,21 @@ class FirebaseAuthService {
           .signInWithEmailAndPassword(email: email, password: password);
       return credential.user!;
     } on FirebaseAuthException catch (e) {
-      log("Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code is ${e.code}");
       if (e.code == 'user-not-found') {
-        throw CustomException(message: 'The password or email is incorrect.');
+        throw CustomException(message: AppExceptionsStrings.userNotFound);
       } else if (e.code == 'wrong-password') {
-        throw CustomException(message: 'The password or email is incorrect.');
+        throw CustomException(message: AppExceptionsStrings.wrongPassword);
       } else if (e.code == 'invalid-credential') {
-        throw CustomException(message: 'The password or email is incorrect.');
+        throw CustomException(message: AppExceptionsStrings.invalidCredential);
       } else if (e.code == 'network-request-failed') {
         throw CustomException(
-            message: 'Make sure you are connected to the internet.');
+            message: AppExceptionsStrings.networkRequestFailed);
       } else {
         throw CustomException(
-            message: 'Something went wrong. Please try again.');
+            message: AppExceptionsStrings.somethingWentWrong);
       }
     } catch (e) {
-      throw CustomException(message: 'Something went wrong. Please try again.');
+      throw CustomException(message: AppExceptionsStrings.somethingWentWrong);
     }
   }
 
