@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:svg_flutter/svg_flutter.dart';
 
 import '/core/utils/app_images.dart';
+
 class AuthHeaderComponent extends StatelessWidget {
   const AuthHeaderComponent({
     super.key,
@@ -10,11 +10,14 @@ class AuthHeaderComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
+    return SizedBox(
       width: double.infinity,
       height: 350,
-      AppImages.headerBackgroundWithLogo,
-      fit: BoxFit.fill,
+      child: SvgPicture.asset(
+        // width: double.maxFinite,
+        AppImages.headerBackgroundWithLogo,
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
