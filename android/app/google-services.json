@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "374773879384",
+    "project_id": "mart-app-58fc7",
+    "storage_bucket": "mart-app-58fc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374773879384:android:0341f64bcd4646f8db302d",
+        "android_client_info": {
+          "package_name": "com.example.mart_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374773879384-fcomg8nh27hbbi3vcmaft31cbdfh18ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9Nju1oZ-LBnWGYb0HgAdK7CXwQq0pP-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374773879384-fcomg8nh27hbbi3vcmaft31cbdfh18ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "374773879384-fl4l9up6i0ad3hbf7e5rnjb8e40l5afe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.martApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
