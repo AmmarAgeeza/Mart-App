@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:mart_app/core/database/cache/cache_consumer.dart';
-import 'package:mart_app/core/database/firebase/data_service.dart';
+import 'package:mart_app/core/database/firebase/database_service.dart';
 import 'package:mart_app/core/database/firebase/firebase_auth_service.dart';
 import 'package:mart_app/core/database/firebase/firestore_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';

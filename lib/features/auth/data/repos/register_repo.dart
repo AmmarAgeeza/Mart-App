@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mart_app/features/auth/data/models/user_model.dart';
 
-import '../../../../core/database/firebase/data_service.dart';
+import '../../../../core/database/firebase/database_service.dart';
 import '../../../../core/database/firebase/end_points.dart';
 import '../../../../core/database/firebase/firebase_auth_service.dart';
 import '../../../../core/errors/exceptions.dart';
