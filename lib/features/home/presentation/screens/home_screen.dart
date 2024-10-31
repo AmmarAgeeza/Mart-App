@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/app_bar_component.dart';
+import '../components/slider_component.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,13 +15,15 @@ class HomeScreen extends StatelessWidget {
           child: CustomScrollView(
             physics: BouncingScrollPhysics(),
             slivers: [
-              //Sliders + Categories + Best Selling Products
+              //appBar Component + Sliders + Categories + Best Selling Products
               SliverToBoxAdapter(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //appBar Component
                     AppBarComponent(),
+                    //Sliders Component
+                    SlidersComponent(),
                   ],
                 ),
               )
