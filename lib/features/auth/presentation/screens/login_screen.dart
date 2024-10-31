@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mart_app/core/utils/commons.dart';
 
+import '../../../../core/utils/app_enums.dart';
+import '../../../../core/utils/app_routes.dart';
+import '../../../../core/widgets/loading_component.dart';
 import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -19,59 +23,80 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //header => background image and logo
-            const AuthHeaderComponent(),
-            Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //login form
-                  const Text(
-                    AppStrings.welcomeBack,
-                    style: AppStyles.boldBlack22,
+      body: BlocConsumer<LoginCubit, LoginState>(
+        listener: (context, state) {
+          if (state is LoginErrorState) {
+            context.showToastMsg(
+                msg: state.errorMessage, toastState: ToastStates.error);
+          }
+          if (state is LoginSucessState) {
+            context.showToastMsg(
+                msg: state.message, toastState: ToastStates.success);
+            context.navigateAndFinish(screenRoute: Routes.homeRoute);
+          }
+        },
+        builder: (context, state) {
+          return state is LoginLoadingState
+              ? const LoadingScreen()
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //header => background image and logo
+                      const AuthHeaderComponent(),
+                      Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //login form
+                            const Text(
+                              AppStrings.welcomeBack,
+                              style: AppStyles.boldBlack22,
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            const LoginFormComponent(),
+                            //forget password
+                            const ForgetPasswordComponent(),
+                            //login button
+                            CustomButton(
+                              onPressed: () {
+                                if (context
+                                    .read<LoginCubit>()
+                                    .loginFormKey
+                                    .currentState!
+                                    .validate()) {
+                                  context
+                                      .read<LoginCubit>()
+                                      .singUserWithEmailAndPassword();
+                                }
+                              },
+                              text: AppStrings.signIn,
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            //divider => ----or----
+                            const OrDividerComponent(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            //social auth
+                            const SocialMediaLoginComponent(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            // don't have an account
+                            const Center(child: DontHaveAccountText()),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const LoginFormComponent(),
-                  //forget password
-                  const ForgetPasswordComponent(),
-                  //login button
-                  CustomButton(
-                    onPressed: () {
-                      if (context
-                          .read<LoginCubit>()
-                          .loginFormKey
-                          .currentState!
-                          .validate()) {}
-                    },
-                    text: AppStrings.signIn,
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  //divider => ----or----
-                  const OrDividerComponent(),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  //social auth
-                  const SocialMediaLoginComponent(),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  // don't have an account
-                  const Center(child: DontHaveAccountText()),
-                ],
-              ),
-            )
-          ],
-        ),
+                );
+        },
       ),
     ));
   }

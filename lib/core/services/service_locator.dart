@@ -5,6 +5,7 @@ import 'package:mart_app/core/database/firebase/firebase_auth_service.dart';
 import 'package:mart_app/core/database/firebase/firestore_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/auth/data/repos/login_repo.dart';
 import '../../features/auth/data/repos/register_repo.dart';
 import '../database/cache/shared_prefs_consumer.dart';
 
@@ -13,6 +14,8 @@ Future<void> serviceLocatorInit() async {
   // repositories
   sl.registerLazySingleton(
       () => RegisterRepo(databaseService: sl(), firebaseAuthService: sl()));
+  sl.registerLazySingleton(
+      () => LoginRepo(databaseService: sl(), firebaseAuthService: sl()));
   // chache helper
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();

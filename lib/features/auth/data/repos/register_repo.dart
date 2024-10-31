@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mart_app/features/auth/data/models/user_model.dart';
 
+import '/features/auth/data/models/user_model.dart';
+import '../../../../core/database/firebase/app_exceptions_strings.dart';
 import '../../../../core/database/firebase/database_service.dart';
 import '../../../../core/database/firebase/end_points.dart';
 import '../../../../core/database/firebase/firebase_auth_service.dart';
@@ -17,7 +18,7 @@ class RegisterRepo {
     required this.databaseService,
   });
   Future<Either<Failure, String>> createUserWithEmailAndPassword(
-  RegisterData registerData,
+    RegisterData registerData,
   ) async {
     User? user;
     try {
@@ -40,15 +41,16 @@ class RegisterRepo {
       await deleteUser(user);
       return left(
         ServerFailure(
-          'Something went wrong. Please try again.',
+          AppExceptionsStrings.somethingWentWrong,
         ),
       );
     }
   }
+
 //add user to firestore
   Future addUserData({required UserModel user}) async {
     await databaseService.addData(
-      path: DatabaseEndpoint.addUserData,
+      path: Endpoints.addUserData,
       data: user.toMap(),
       documentId: user.uId,
     );
