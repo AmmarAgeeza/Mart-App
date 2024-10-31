@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mart_app/core/utils/commons.dart';
 
+import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_routes.dart';
-import '../../../../core/widgets/loading_component.dart';
-import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
+import '../../../../core/widgets/loading_component.dart';
 import '../components/auth_header_component.dart';
 import '../components/login/dont_have_account_text.dart';
 import '../components/login/forget_password_component.dart';
 import '../components/login/login_form_component.dart';
-import '../components/or_divider_component.dart';
-import '../components/login/social_media_login_component.dart';
 import '../cubit/login/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -78,6 +76,7 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(
                               height: 24,
                             ),
+                            /*
                             //divider => ----or----
                             const OrDividerComponent(),
                             const SizedBox(
@@ -87,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                             const SocialMediaLoginComponent(),
                             const SizedBox(
                               height: 24,
-                            ),
+                            ),*/
                             // don't have an account
                             const Center(child: DontHaveAccountText()),
                           ],
