@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mart_app/core/utils/app_enums.dart';
+import 'package:mart_app/core/utils/commons.dart';
 
+import '../../../../core/utils/app_routes.dart';
+import '../../../../core/widgets/loading_component.dart';
 import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -19,64 +23,85 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //header => background image and logo
-            const AuthHeaderComponent(),
-            Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //register form
-                  const Text(
-                    AppStrings.createYourAccount,
-                    style: AppStyles.boldBlack22,
+      body: BlocConsumer<RegisterCubit, RegisterState>(
+        listener: (context, state) {
+          if (state is RegisterErrorState) {
+            context.showToastMsg(
+                msg: state.errorMessage, toastState: ToastStates.error);
+          }
+          if (state is RegisterSucessState) {
+            context.showToastMsg(
+                msg: state.message, toastState: ToastStates.success);
+            context.navigateAndFinish(screenRoute: Routes.loginRoute);
+          }
+        },
+        builder: (context, state) {
+          return state is RegisterLoadingState
+              ? const LoadingScreen()
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //header => background image and logo
+                      const AuthHeaderComponent(),
+                      Padding(
+                        padding: const EdgeInsets.all(32.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //register form
+                            const Text(
+                              AppStrings.createYourAccount,
+                              style: AppStyles.boldBlack22,
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            const RegisterFormComponent(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            //register button
+                            CustomButton(
+                              onPressed: () {
+                                if (context
+                                    .read<RegisterCubit>()
+                                    .registerFormKey
+                                    .currentState!
+                                    .validate()) {
+                                  context
+                                      .read<RegisterCubit>()
+                                      .createUserWithEmailAndPassword();
+                                }
+                              },
+                              text: AppStrings.signUp,
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            const TermsConditionsText(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            //divider => ----or----
+                            const OrDividerComponent(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            //social auth
+                            const SocialMediaRegisterComponent(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            // already have an account
+                            const Center(child: AlreadyHaveAccountText()),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const RegisterFormComponent(),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  //login button
-                  CustomButton(
-                    onPressed: () {
-                      if (context
-                          .read<RegisterCubit>()
-                          .registerFormKey
-                          .currentState!
-                          .validate()) {}
-                    },
-                    text: AppStrings.signUp,
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  const TermsConditionsText(),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  //divider => ----or----
-                  const OrDividerComponent(),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  //social auth
-                  const SocialMediaRegisterComponent(),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  // already have an account
-                  const Center(child: AlreadyHaveAccountText()),
-                ],
-              ),
-            )
-          ],
-        ),
+                );
+        },
       ),
     ));
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../services/service_locator.dart';
 import '/features/auth/presentation/cubit/login/login_cubit.dart';
 import '/features/auth/presentation/cubit/register/register_cubit.dart';
 import '/features/auth/presentation/cubit/reset_password/reset_password_cubit.dart';
@@ -40,7 +41,7 @@ class AppRoutes {
       case Routes.register:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => RegisterCubit(),
+            create: (context) => RegisterCubit(sl()),
             child: const RegisterScreen(),
           ),
         );
