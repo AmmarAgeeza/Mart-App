@@ -48,7 +48,7 @@ class AppRoutes {
       case Routes.resetPassword:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => ResetPasswordCubit(),
+            create: (context) => ResetPasswordCubit(sl()),
             child: const ResetPasswordScreen(),
           ),
         );

@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mart_app/core/database/firebase/database_service.dart';
+import 'package:mart_app/features/auth/data/repos/register_repo.dart';
 
 import '../../../../core/database/cache/cache_consumer.dart';
 import '../../../../core/database/cache/cache_keys.dart';
@@ -16,7 +18,11 @@ import '../models/user_model.dart';
 class LoginRepo {
   final FirebaseAuthService firebaseAuthService;
   final DatabaseService databaseService;
-  LoginRepo({required this.firebaseAuthService, required this.databaseService});
+  final RegisterRepo registerRepo;
+  LoginRepo(
+      {required this.firebaseAuthService,
+      required this.databaseService,
+      required this.registerRepo});
   Future<Either<Failure, String>> signinWithEmailAndPassword(
       String email, String password) async {
     try {
@@ -32,7 +38,6 @@ class LoginRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
-      log('error $e');
       return left(
         ServerFailure(
           AppExceptionsStrings.somethingWentWrong,
@@ -50,5 +55,32 @@ class LoginRepo {
 
   Future saveUserData({required String uId}) async {
     await sl<CacheConsumer>().saveData(key: CacheKeys.userUid, value: uId);
+  }
+
+  Future<Either<Failure, String>> signinWithGoogle() async {
+    User? user;
+    try {
+      user = await firebaseAuthService.signInWithGoogle();
+      var userModel = UserModel.fromFirebaseUser(user);
+      var isUserExist = await databaseService.checkIfDataExists(
+          path: Endpoints.isUserExists, docuementId: user.uid);
+      if (isUserExist) {
+        await getUserData(uid: user.uid);
+      } else {
+        await registerRepo.addUserData(user: userModel);
+      }
+
+      await saveUserData(uId: userModel.uId);
+      return right('Logged in successfully');
+    } catch (e) {
+      await registerRepo.deleteUser(user);
+
+        log('$e');
+      return left(
+        ServerFailure(
+          AppExceptionsStrings.somethingWentWrong,
+        ),
+      );
+    }
   }
 }

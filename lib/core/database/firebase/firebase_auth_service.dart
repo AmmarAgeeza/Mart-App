@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -51,11 +49,9 @@ class FirebaseAuthService {
         throw CustomException(
             message: AppExceptionsStrings.networkRequestFailed);
       } else {
-        log('ss');
         throw CustomException(message: AppExceptionsStrings.somethingWentWrong);
       }
     } catch (e) {
-      log('ss');
       throw CustomException(message: AppExceptionsStrings.somethingWentWrong);
     }
   }
@@ -78,5 +74,24 @@ class FirebaseAuthService {
 
   bool isLoggedIn() {
     return FirebaseAuth.instance.currentUser != null;
+  }
+
+  Future<void> sendResetEmail({
+    required String email,
+  }) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: email,
+      );
+      return;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        throw CustomException(message: AppExceptionsStrings.userNotFound);
+      } else {
+        throw CustomException(message: AppExceptionsStrings.somethingWentWrong);
+      }
+    } catch (e) {
+      throw CustomException(message: AppExceptionsStrings.somethingWentWrong);
+    }
   }
 }

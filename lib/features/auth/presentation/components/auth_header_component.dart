@@ -12,7 +12,7 @@ class AuthHeaderComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 350,
+      height: 250,
       child: SvgPicture.asset(
         // width: double.maxFinite,
         AppImages.headerBackgroundWithLogo,
