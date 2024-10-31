@@ -53,7 +53,7 @@ class LoginFormComponent extends StatelessWidget {
             },
             validate: (value) {
               if (value == null ||
-                  !CustomValidationHandler.isValidPassword(value)) {
+                  !CustomValidationHandler.passwordHasMinLength(value)) {
                 return AppStrings.enterValidPassword;
               }
               return null;

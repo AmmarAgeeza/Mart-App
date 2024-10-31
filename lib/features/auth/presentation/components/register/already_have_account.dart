@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import '/core/utils/commons.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -20,7 +21,10 @@ class AlreadyHaveAccountText extends StatelessWidget {
           TextSpan(
             text: ' Sign In',
             style: AppStyles.semiBoldOrang16,
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.pop();
+              },
           ),
         ],
       ),

@@ -35,4 +35,5 @@ class AppStrings {
   static const String enterValidPassword = 'enter valid password';
   static const String enterValidName = 'enter valid name';
   static const String noRouteFound = "No Route Found";
+  
 }

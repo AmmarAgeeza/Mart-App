@@ -6,11 +6,50 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/custom_validations.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
+import 'password_vaildations_component.dart';
 
-class RegisterFormComponent extends StatelessWidget {
+class RegisterFormComponent extends StatefulWidget {
   const RegisterFormComponent({
     super.key,
   });
+
+  @override
+  State<RegisterFormComponent> createState() => _RegisterFormComponentState();
+}
+
+class _RegisterFormComponentState extends State<RegisterFormComponent> {
+  bool hasLowercase = false;
+  bool hasUppercase = false;
+  bool hasSpecialCharacters = false;
+  bool hasNumber = false;
+  bool hasMinLength = false;
+
+  late TextEditingController passwordController;
+  void setupPasswordControllerListener() {
+    passwordController.addListener(() {
+      setState(() {
+        hasLowercase = CustomValidationHandler.passwordHasLowercase(
+            passwordController.text);
+        hasUppercase = CustomValidationHandler.passwordHasUppercase(
+            passwordController.text);
+        hasSpecialCharacters =
+            CustomValidationHandler.passwordHasSpecialCharacter(
+                passwordController.text);
+        hasNumber =
+            CustomValidationHandler.passwordHasDigit(passwordController.text);
+        hasMinLength = CustomValidationHandler.passwordHasMinLength(
+            passwordController.text);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    passwordController =
+        context.read<RegisterCubit>().registerPasswordController;
+    setupPasswordControllerListener();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +119,16 @@ class RegisterFormComponent extends StatelessWidget {
               }
               return null;
             },
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          PasswordValidationsComponent(
+            hasLowerCase: hasLowercase,
+            hasUpperCase: hasUppercase,
+            hasSpecialCharacters: hasSpecialCharacters,
+            hasNumber: hasNumber,
+            hasMinLength: hasMinLength,
           ),
         ],
       ),
