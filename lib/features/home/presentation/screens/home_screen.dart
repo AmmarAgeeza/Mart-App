@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mart_app/features/home/presentation/components/title_see_more_component.dart';
 
 import '../components/app_bar_component.dart';
+import '../components/categories_component.dart';
 import '../components/slider_component.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,12 +10,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
           child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             slivers: [
               //appBar Component + Sliders + Categories + Best Selling Products
               SliverToBoxAdapter(
@@ -21,9 +23,14 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //appBar Component
-                    AppBarComponent(),
+                    const AppBarComponent(),
                     //Sliders Component
-                    SlidersComponent(),
+                    const SlidersComponent(),
+                    // Categories
+                    TitleSeeMoreComponent(title: 'Categories', onTab: () {}),
+                    const CategoriesComponent(),
+                    //Recommended Products
+                    TitleSeeMoreComponent(title: 'Recommended ', onTab: () {}),
                   ],
                 ),
               )
