@@ -3,6 +3,7 @@ import 'package:mart_app/features/home/presentation/components/title_see_more_co
 
 import '../components/app_bar_component.dart';
 import '../components/categories_component.dart';
+import '../components/recommended_products.dart';
 import '../components/slider_component.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -31,6 +32,7 @@ class HomeScreen extends StatelessWidget {
                     const CategoriesComponent(),
                     //Recommended Products
                     TitleSeeMoreComponent(title: 'Recommended ', onTab: () {}),
+                   const RecommendedProducts(),
                   ],
                 ),
               )
