@@ -26,6 +26,10 @@ dependencies:
   cloud_firestore: ^5.4.4
   fluttertoast: ^8.2.8
   loading_animations: ^2.2.0
+  carousel_slider: ^5.0.0
+  cached_network_image: ^3.4.1
+  shimmer: ^3.0.0
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

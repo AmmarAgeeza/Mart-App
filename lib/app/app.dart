@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/database/cache/cache_consumer.dart';
 import '../core/database/cache/cache_keys.dart';
@@ -38,13 +39,19 @@ class _MartAppState extends State<MartApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: route,
-      // hasVisited ? Routes.loginRoute : Routes.initialRoute,
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-      title: AppStrings.appName,
-      theme: AppTheme.getAppTheme(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(428, 926),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, _) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            initialRoute: route,
+            // hasVisited ? Routes.loginRoute : Routes.initialRoute,
+            onGenerateRoute: AppRoutes.onGenerateRoute,
+            title: AppStrings.appName,
+            theme: AppTheme.getAppTheme(),
+          );
+        });
   }
 }
