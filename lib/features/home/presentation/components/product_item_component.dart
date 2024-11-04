@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../data/models/product_model.dart';
 
-class ProductItemComponent extends StatelessWidget {
-  const ProductItemComponent({super.key, required this.model});
+class RecommendedItemComponent extends StatelessWidget {
+  const RecommendedItemComponent({super.key, required this.model});
   final ProductModel model;
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,14 @@ class ProductItemComponent extends StatelessWidget {
         children: [
           //image
           Expanded(
-            child: Image.asset(
-              model.imageUrl,
-              fit: BoxFit.cover,
-              width: 150.w,
-              height: 150.h,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                model.imageUrl,
+                fit: BoxFit.cover,
+                width: 150.w,
+                height: 150.h,
+              ),
             ),
           ),
           Text(

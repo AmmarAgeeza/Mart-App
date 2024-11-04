@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mart_app/features/home/presentation/components/title_see_more_component.dart';
 
+import '../components/all_products_component.dart';
 import '../components/app_bar_component.dart';
 import '../components/categories_component.dart';
 import '../components/recommended_products.dart';
@@ -32,10 +33,13 @@ class HomeScreen extends StatelessWidget {
                     const CategoriesComponent(),
                     //Recommended Products
                     TitleSeeMoreComponent(title: 'Recommended ', onTab: () {}),
-                   const RecommendedProducts(),
+                    const RecommendedProducts(),
+                    //All Products
+                    TitleSeeMoreComponent(title: 'All Products ', onTab: () {}),
                   ],
                 ),
-              )
+              ),
+              const AllProductsComponent(),
             ],
           ),
         ),

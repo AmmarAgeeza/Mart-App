@@ -17,7 +17,7 @@ class RecommendedProducts extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {},
-            child: ProductItemComponent(
+            child: RecommendedItemComponent(
               model: ProductModel.products[index],
             ),
           );
