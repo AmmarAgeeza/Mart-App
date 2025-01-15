@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mart_app/core/utils/app_enums.dart';
 import 'package:mart_app/core/utils/commons.dart';
 
+import '../components/or_divider_component.dart';
+import '../components/register/social_media_register_component.dart';
 import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -81,7 +83,7 @@ class RegisterScreen extends StatelessWidget {
                             const SizedBox(
                               height: 24,
                             ),
-                            /*
+                            
                             //divider => ----or----
                             const OrDividerComponent(),
                             const SizedBox(
@@ -92,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                             const SizedBox(
                               height: 24,
                             ),
-                            */
+                            
                             // already have an account
                             const Center(child: AlreadyHaveAccountText()),
                           ],

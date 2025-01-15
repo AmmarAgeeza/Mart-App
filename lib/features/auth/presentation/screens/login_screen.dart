@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mart_app/core/utils/commons.dart';
-
+import '../components/login/social_media_login_component.dart';
+import '../components/or_divider_component.dart';
 import '/core/widgets/custom_button.dart';
 import '../../../../core/utils/app_enums.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -76,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(
                               height: 24,
                             ),
-                            /*
+                            
                             //divider => ----or----
                             const OrDividerComponent(),
                             const SizedBox(
@@ -86,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                             const SocialMediaLoginComponent(),
                             const SizedBox(
                               height: 24,
-                            ),*/
+                            ),
                             // don't have an account
                             const Center(child: DontHaveAccountText()),
                           ],
