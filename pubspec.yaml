@@ -21,7 +21,7 @@ dependencies:
   icons_plus: ^5.0.0
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.1
-  google_sign_in: ^6.2.1
+  google_sign_in: ^6.2.2
   dartz: ^0.10.1
   cloud_firestore: ^5.4.4
   fluttertoast: ^8.2.8
